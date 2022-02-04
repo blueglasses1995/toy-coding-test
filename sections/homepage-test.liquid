@@ -1,0 +1,42 @@
+{{ 'section-homepage-test.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Homepage-test",
+  "tag": "section",
+  "class": "homepage-test",
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Title",
+    "default": "Toy Coding Test",
+    "info": "Title for homepage"
+    },
+    {
+    "type": "text",
+    "id": "subtitle",
+    "label": "Subtitle",
+    "default": "Test your coding skills",
+    "info": "Subtitle for homepage"
+    },
+    {
+    "type": "image_picker",
+    "id": "image_for_pc",
+    "label": "Image for PC"
+    },
+    {
+    "type": "image_picker",
+    "id": "image_for_mobile",
+    "label": "Image for Mobile"
+    },
+    {
+    "type": "checkbox",
+    "id": "hide_image_for_mobile",
+    "default": false,
+    "label": "Button to hide image for mobile",
+    "info": "Hide an image for mobile if true"
+    }
+  ]
+}
+{% endschema %}

@@ -1,5 +1,8 @@
 {
   "sections": {
+    "homepage-test": {
+      "type": "homepage-test"
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -129,6 +132,7 @@
     }
   },
   "order": [
+    "homepage-test",
     "image_banner",
     "rich_text",
     "featured_collection",

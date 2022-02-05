@@ -1,9 +1,5 @@
 {{ 'section-homepage-test.css' | asset_url | stylesheet_tag }}
 
-{% javascript %}
-    {% assign window_size = window.innerWidth %}
-{% endjavascript %}
-
 <div id="homepage-test" class="banner">
     <div class="title">
         <h1>{{ section.settings.title }}</h1>

@@ -1,5 +1,59 @@
 {{ 'section-homepage-test.css' | asset_url | stylesheet_tag }}
 
+{% javascript %}
+    {% assign window_size = window.innerWidth %}
+{% endjavascript %}
+
+<div id="homepage-test" class="banner">
+    <div class="title">
+        <h1>{{ section.settings.title }}</h1>
+    </div>
+    <div class="subtitle">
+        <h2>{{ section.settings.subtitle }}</h2>
+    </div>
+    {%- if section.settings.image_for_pc != blank -%}
+        <div class="image_for_pc">
+            <img
+                srcset="{%- if section.settings.image_for_pc.width >= 375 -%}{{ section.settings.image_for_pc | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 750 -%}{{ section.settings.image_for_pc | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 1100 -%}{{ section.settings.image_for_pc | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 1500 -%}{{ section.settings.image_for_pc | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 1780 -%}{{ section.settings.image_for_pc | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 2000 -%}{{ section.settings.image_for_pc | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 3000 -%}{{ section.settings.image_for_pc | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if section.settings.image_for_pc.width >= 3840 -%}{{ section.settings.image_for_pc | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ section.settings.image_for_pc | img_url: 'master' }} {{ section.settings.image_for_pc.width }}w"
+                src="{{ section.settings.image_for_pc | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ section.settings.image_for_pc.alt | escape }}"
+                width="{{ section.settings.image_for_pc.width}}"
+                height="{{ section.settings.image_for_pc.width | divided_by: section.settings.image_for_pc.aspect_ratio}}"
+            >
+        </div>
+    {%- endif -%}
+    {%- if section.settings.image_for_mobile != blank and section.settings.hide_image_for_mobile == false -%}
+        <div class="image_for_mobile">
+            <img
+                srcset="{%- if section.settings.image_for_mobile.width >= 375 -%}{{ section.settings.image_for_mobile | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 750 -%}{{ section.settings.image_for_mobile | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 1100 -%}{{ section.settings.image_for_mobile | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 1500 -%}{{ section.settings.image_for_mobile | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 1780 -%}{{ section.settings.image_for_mobile | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 2000 -%}{{ section.settings.image_for_mobile | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 3000 -%}{{ section.settings.image_for_mobile | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if section.settings.image_for_mobile.width >= 3840 -%}{{ section.settings.image_for_mobile | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ section.settings.image_for_mobile | img_url: 'master' }} {{ section.settings.image_for_mobile.width }}w"
+                sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+                src="{{ section.settings.image_for_mobile | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ section.settings.image_for_mobile.alt | escape }}"
+                width="{{ section.settings.image_for_mobile.width }}"
+                height="{{ section.settings.image_for_mobile.width | divided_by: section.settings.image_for_mobile.aspect_ratio }}"
+            >
+      </div>
+    {%- endif -%}
+</div>
+
 {% schema %}
 {
   "name": "Homepage-test",
